@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BookStore</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+</head>
+<body>
+<div>
+
+    <div class="form-wrapper">
+        <form class="form-wrapper" method="get" action="/home" >
+            <input type="text" name="server" value="Java" class="hidden"/>
+            <input type="submit" value="Java Server"/>
+        </form>
+        <form class="form-wrapper" method="get" action="/home" >
+            <input type="text" name="server" value="Php" class="hidden"/>
+            <input type="submit" value="Php Server"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
+<?php

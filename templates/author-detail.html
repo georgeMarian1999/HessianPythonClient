@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>
+        {{author.name}}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+
+</head>
+<body>
+<div class="form-wrapper">
+    <form method="get" action="/authors" >
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input class="corner-button left-corner-button" type="submit" value="Back to authors table"/>
+    </form>
+    <div>
+        <h2>Edit author details or delete the author</h2>
+    </div>
+    <form class="form" method=get action="/edit-author">
+       <input type=text name="authorId" class=hidden value="{{author.authorId}}"  />
+       <label for=name>Name</label>
+        <input type=text name="name"  value="{{author.name}}"  />
+        <label for=age>Age</label>
+        <input type=text name="age" value="{{author.age}}"  />
+
+
+        <input class=hidden type=text name=server value="{{server}}" />
+
+        <input type="submit" value="Edit author"/>
+    </form>
+
+    <form method="get" action="/delete-author">
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input type="text" name=authorId value="{{author.authorId}}" class="hidden"/>
+        <input type="submit" value="Delete author"/>
+    </form>
+</div>
+
+</body>
+</html>

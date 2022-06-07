@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Authors</title>
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+</head>
+    <body>
+    <form class="form-wrapper" method="get" action="/home">
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input type="submit" class="left-corner-button corner-button" value="Back home"/>
+    </form>
+    <form class="form-wrapper" method="get" action="/author-add">
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input type="submit" value="Add author" class="right-corner-button corner-button"/>
+    </form>
+    <div class="form-wrapper">
+        <h2>Search all authors with the name</h2>
+        <form method="get" action="/authors" target="_parent">
+            <input type="text" name="search-parameter"/>
+            <input class="hidden" type="text" name="server" value="{{server}}" />
+            <input type="submit"/>
+        </form>
+        <form method="get" action="/authors" target="_parent">
+            <input class="hidden" type="text" name="server" value="{{server}}" />
+            <input type="submit" value="Reset"/>
+        </form>
+    </div>
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        {% for author in authors %}
+      <tr>
+          <td>
+              <form action="/author-detail" method=get>
+                  <input type="text" name="authorId" class="hidden" value="{{author.authorId}}" />
+                  <input type='text' name="server" class='hidden' value="{{server}}"/>
+                  <input type='submit' value="{{author.authorId}}" />
+              </form>
+          </td>
+          <td>
+              {{author.name}}
+                </td>
+                <td>
+                    {{author.age}}
+                </td>
+                </tr>
+{% endfor %}
+    </table>
+
+    </form>
+
+
+    </body>
+</html>

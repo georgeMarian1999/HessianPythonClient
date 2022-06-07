@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Books</title>
+     <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+</head>
+<body>
+<form class="form-wrapper" method="get" action="/home">
+    <input class="hidden" type="text" name="server" value="{{server}}" />
+    <input type="submit" class="left-corner-button corner-button" value="Back home"/>
+</form>
+<form class="form-wrapper" method="get" action="/book-add">
+    <input class="hidden" type="text" name="server" value="{{server}}" />
+    <input type="submit" value="Add book" class="right-corner-button corner-button"/>
+</form>
+<div class="form-wrapper">
+    <h2>Search all books with the name</h2>
+    <form method="get" action="/books" target="_parent">
+        <input type="text" name="search-parameter"/>
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input type="submit"/>
+    </form>
+    <form method="get" action="/books" target="_parent">
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input type="submit" value="Reset"/>
+    </form>
+</div>
+
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Age</th>
+    </tr>
+    {% for book in books  %}
+    <tr>
+                <td>
+                <form action="/book-detail" method=get>
+                    <input type="text" name="bookId" class="hidden" value="{{book.bookId}}" />
+                    <input type='text' name='server' class='hidden' value="{{server}}"/>
+                    <input type='submit' value="{{book.bookId}}" />
+                </form>
+                </td>
+                <td>
+                    {{book.title}}
+                </td>
+                <td>
+                    {{book.year}}
+                </td>
+                </tr>
+    {% endfor %}
+
+</table>
+
+</form>
+
+
+</body>
+</html>

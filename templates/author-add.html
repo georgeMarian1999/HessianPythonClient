@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Add author</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+</head>
+<body>
+<div class="form-wrapper">
+    <form method="get" action="authors.php" >
+        <input class=hidden type=text name=server value="{{server}}" />
+
+        <input class="corner-button left-corner-button" type="submit" value="Back to authors table"/>
+    </form>
+    <form class="form" method="get" action="/add-author">
+        <label for="name" >Name</label>
+        <input id="name" type="text" name=name />
+        <label for="age" >Age</label>
+        <input id="age" type="text" name=age />
+        <input class=hidden type=text name=server value="{{server}}" />
+        <input type="submit" value="Add author"/>
+    </form>
+</div>
+</body>
+</html>

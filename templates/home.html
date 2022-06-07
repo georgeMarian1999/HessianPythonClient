@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BookStore</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+</head>
+<body>
+<div>
+    <a class="corner-button left-corner-button" href="/">
+        Back to index
+    </a>
+    <div class="form-wrapper">
+
+        <div>
+            <h2>Welcome to the BookStore</h2>
+        </div>
+
+        <form class="form-wrapper" method="get" action="/authors">
+
+           <input class="hidden" type="text" name="server" value="{{server}}" />
+           <input type="submit" value="See authors"/>
+        </form>
+        <form class="form-wrapper" method="get" action="/books">
+            <input class="hidden" type="text" name="server" value="{{server}}" />
+            <input type="submit" value="See books"/>
+        </form>
+
+        <h2>{{ping}}</h2>
+
+
+    </div>
+</div>
+</body>
+</html>

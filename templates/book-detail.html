@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>
+        {{book.title}}
+    </title>
+     <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}"/>
+
+</head>
+<body>
+<div class="form-wrapper">
+    <form method="get" action="/books" >
+        <input class="hidden" type="text" name="server" value="{{server}}" />
+        <input class="corner-button left-corner-button" type="submit" value="Back to books table"/>
+    </form>
+    <div>
+        <h2>Edit book details or delete the book</h2>
+    </div>
+    <form id="edit-book-form" class="form" method=get action="/edit-book">
+        <input type=text name=bookId class=hidden value="{{book.bookId}}">
+        <label for=title>Title</label>
+        <input type=text name=title  value="{{book.title}}"  />
+        <label for=description>Description</label>
+        <input type=text name=description value="{{book.description}}"  />
+        <label for=year>Year</label>
+        <input type=text name=year value="{{book.year}}"  />
+
+        <select form="edit-book-form" name="authorId">
+            {% for author in authors %}
+                {% if author.authorId == book.authorId %}
+                    <option selected value="{{author.authorId}}">{{author.name}}</option>
+                {% else %}
+                    <option value="{{author.authorId}}">{{author.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <input class=hidden type=text name=server value="{{server}}" />
+
+        <input type="submit" value="Edit book"/>
+    </form>
+
+    <form method="get" action="/delete-book">
+        <input class="hidden" type="text" name=server value="{{server}}" />
+        <input type="text" name=bookId value="{{book.bookId}}" class="hidden"/>
+        <input type="submit" value="Delete book"/>
+    </form>
+</div>
+
+</body>
+</html>
